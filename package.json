@@ -1,0 +1,37 @@
+{
+  "name": "casl_comet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:js": "watchify --entry src/scripts/app.js --transform babelify -o dist/scripts/bundle.js -p mapstraction --debug --verbose",
+    "browserify": "browserify --entry src/scripts/app.js --transform babelify > dist/scripts/bundle.js",
+    "uglify": "uglifyjs --compress warnings=false --mangle --output dist/scripts/bundle.min.js -- dist/scripts/bundle.js",
+    "build:js": "mkdirp dist/scripts && npm run browserify && npm run uglify",
+    "serve": "browser-sync start --server --serveStatic dist --files dist/styles/*.css, dist/scripts/*.js, **/*.html",
+    "watch": "run-p serve watch:js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev001hajipro/casl_comet.git"
+  },
+  "keywords": [
+    "CASL",
+    "COMET",
+    "emulator"
+  ],
+  "author": "dev001hajipro",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.3.0",
+    "mapstraction": "^1.0.1",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.0.2",
+    "uglify-js": "^3.0.4",
+    "watchify": "^3.9.0"
+  }
+}
